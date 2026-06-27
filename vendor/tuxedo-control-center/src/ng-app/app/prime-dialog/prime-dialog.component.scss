@@ -1,0 +1,59 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+* {
+    background: var(--foreground-color);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.mat-mdc-dialog-title {
+    margin-top: 0;
+}
+
+.mat-mdc-dialog-content {
+    flex-grow: 1;
+}
+
+.content {
+    overflow-wrap: break-word;
+}
+
+.action-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: auto;
+}
+
+button {
+    margin-left: 8px;
+}
+
+.mat-mdc-progress-bar {
+    width: 100%;
+    height: 2px;
+    margin-bottom: -2px;
+}

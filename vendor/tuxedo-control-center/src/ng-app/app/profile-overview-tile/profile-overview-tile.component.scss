@@ -1,0 +1,138 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.profile-overview-tile {
+    position: relative;
+    z-index: 10;
+
+    height: 100%;
+    width: 225px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 15px;
+
+    border-radius: 15px;
+
+    hr {
+        opacity: 0.2;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-bottom: 5px;
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin: auto;
+        }
+    }
+
+    content {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+
+        .description {
+            height: 100%;
+            min-height: 120px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .profile-icon {
+        width: 80px;
+        margin: auto;
+        margin-bottom: 5px;
+    }
+
+    .state-status-icons {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 45px;
+
+        .state-icon {
+            width: 30px;
+            height: 40px;
+            svg {
+                width: 40px;
+                --icon-detail: var(--icon-main);
+            }
+        }
+
+        mat-icon {
+            font-size: 30px;
+        }
+
+        .group-right {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+
+            opacity: 0.3;
+        }
+    }
+
+    .status-flexbox {
+        display: block;
+        margin-top: 20px;
+
+        .status-component {
+            display: flex;
+            align-items: center;
+
+            .status-icon-container {
+                width: 48px;
+                height: 48px;
+                svg {
+                    width: inherit;
+                    height: inherit;
+                }
+
+                --icon-detail: var(--icon-main);
+            }
+
+            &.inactive {
+                opacity: 0.3;
+            }
+        }
+    }
+}
+
+::ng-deep .adjust-menu {
+    svg {
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+        vertical-align: middle;
+
+        --icon-detail: var(--icon-main);
+    }
+}

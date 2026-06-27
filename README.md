@@ -3,7 +3,7 @@
 Fedora install automation for this TUXEDO InfinityBook Pro Gen7 laptop.
 
 This repo coordinates the local driver checkout and TUXEDO Control Center
-checkout without vendoring either project.
+source copies needed by the scripts.
 
 ## Quick Start
 
@@ -26,10 +26,11 @@ make install
 
 Defaults are defined in `config/defaults.env`:
 
-- `TUXEDO_DRIVERS_DIR=/home/titus/github/tuxedo-drivers`
-- `TUXEDO_CONTROL_CENTER_DIR=/home/titus/github/tuxedo-control-center`
+- `TUXEDO_DRIVERS_DIR=${repo_root}/vendor/tuxedo-drivers`
+- `TUXEDO_CONTROL_CENTER_DIR=${repo_root}/vendor/tuxedo-control-center`
 
-Create `config/local.env` for machine-local overrides.
+Create `config/local.env` for deliberate machine-local overrides to another
+checkout.
 
 ## Common Targets
 
@@ -42,4 +43,3 @@ Create `config/local.env` for machine-local overrides.
 - `make install-control-center`: install the newest local TCC RPM.
 
 See [SPEC.md](SPEC.md) for the full contract.
-

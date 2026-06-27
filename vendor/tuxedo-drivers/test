@@ -1,0 +1,19 @@
+After reboot, the expected touchpad changes are:
+
+  - /usr/local/bin/tuxedo-touchpad remains installed.
+  - /dev/hidraw0 should get write permission from the udev rule.
+  - Libinput should show only UNIW0001:00 093A:0274 Touchpad, not the bogus companion Mouse.
+  - The DKMS modules should load instead of Fedora’s uniwill_laptop.
+
+  After reboot, verify with:
+
+  dkms status tuxedo-ibp-gen7-drivers
+  lsmod | grep -E 'tuxedo|uniwill'
+  tuxedo-touchpad status
+  sudo libinput list-devices | grep -A8 -B2 'UNIW0001'
+
+  You can test the hardware LED behavior with:
+
+  tuxedo-touchpad off
+  sleep 2
+  tuxedo-touchpad on

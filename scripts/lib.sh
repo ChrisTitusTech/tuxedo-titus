@@ -10,10 +10,6 @@ load_config() {
         # shellcheck disable=SC1091
         source "${repo_root}/config/local.env"
     fi
-
-    if [[ ! -d "${TUXEDO_DRIVERS_DIR}" && -d "/home/titus/github/tuxedo-drives" ]]; then
-        TUXEDO_DRIVERS_DIR="/home/titus/github/tuxedo-drives"
-    fi
 }
 
 info() {

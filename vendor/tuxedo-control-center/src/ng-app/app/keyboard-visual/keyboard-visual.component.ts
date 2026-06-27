@@ -1,0 +1,139 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { Component, EventEmitter, HostListener, Input, type OnInit, Output } from '@angular/core';
+import type { KeyboardBacklightCapabilitiesInterface } from '../../../common/models/TccSettings';
+
+@Component({
+    selector: 'app-keyboard-visual',
+    templateUrl: './keyboard-visual.component.html',
+    styleUrls: ['./keyboard-visual.component.scss'],
+    standalone: false,
+})
+export class KeyboardVisualComponent implements OnInit {
+    @Input()
+    public keyboardBacklightCapabilities: KeyboardBacklightCapabilitiesInterface;
+    @Input() public chosenColorHex: Array<string>;
+    @Output() public selectedZonesChange: EventEmitter<number[]> = new EventEmitter<number[]>();
+    public selectedZones: Array<number> = [];
+    public divHeight: number;
+    private viewInitialized: boolean = false;
+
+    public ngOnInit(): void {
+        this.selectedZones = Array.from(
+            { length: this.keyboardBacklightCapabilities.zones },
+            (_: unknown, i: number): number => i,
+        );
+        this.selectedZonesChange.emit(this.selectedZones);
+    }
+
+    public ngAfterViewInit(): void {
+        this.viewInitialized = true;
+        this.updateHeight();
+    }
+
+    @HostListener('window:resize')
+    public onResize(): void {
+        this.updateHeight();
+    }
+
+    public updateHeight(): void {
+        if (this.viewInitialized) {
+            let el: HTMLElement;
+            if (this.keyboardBacklightCapabilities.zones === 4) {
+                el = document.getElementById('Svg4Zones');
+            } else {
+                el = document.getElementById('Svg1+3Zones');
+            }
+
+            if (el) {
+                const rect: DOMRect = el.getBoundingClientRect();
+                this.divHeight = rect.height;
+                return;
+            }
+            console.error('keyboard-visual: updateHeight: failed to get document element');
+            // todo: further error handling, if code reaches here it means that tuxedo-drivers is properly
+            // installed but there is no backlight hardware to control
+        }
+    }
+
+    private addOrRemoveSelectedZones(num: number): number[] {
+        const index: number = this.selectedZones.indexOf(num);
+
+        if (index !== -1) {
+            this.selectedZones.splice(index, 1);
+        } else {
+            this.selectedZones.push(num);
+        }
+        return this.selectedZones;
+    }
+
+    public getSvgHeight(): number {
+        const zones: number = this.keyboardBacklightCapabilities.zones;
+
+        if (zones === 1 || zones > 4) {
+            return 205;
+        }
+        return 215;
+    }
+
+    public getSvgWidth(): number {
+        const zones: number = this.keyboardBacklightCapabilities.zones;
+
+        if (zones === 1 || zones > 4) {
+            return 728;
+        }
+        return 760;
+    }
+
+    public calculateTranslateValue(zone: number): string {
+        const zones: number = this.keyboardBacklightCapabilities.zones;
+
+        if (zones === 3) {
+            return `${832.61151 + zone * 16}, 535.06891`;
+        } else {
+            return '832.61151, 535.06891';
+        }
+    }
+
+    public updateZoneOpacity(event: MouseEvent, zone: number): void {
+        const zones: number = this.keyboardBacklightCapabilities.zones;
+
+        if (zones === 1 || zones > 4) {
+            return;
+        }
+
+        if (!event.shiftKey) {
+            this.selectedZones = [];
+        }
+
+        this.selectedZonesChange.emit(this.addOrRemoveSelectedZones(zone));
+        const gElements: NodeListOf<Element> = document.querySelectorAll('g.key-group');
+        gElements.forEach((g: SVGGraphicsElement): void => {
+            const isSelected: boolean = this.selectedZones.includes(Number.parseInt(g.dataset.zone, 10));
+            if (isSelected) {
+                g.classList.remove('unselected');
+                g.classList.add('selected');
+            } else {
+                g.classList.add('unselected');
+                g.classList.remove('selected');
+            }
+        });
+    }
+}

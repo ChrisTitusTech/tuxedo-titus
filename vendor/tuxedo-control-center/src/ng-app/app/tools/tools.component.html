@@ -1,0 +1,76 @@
+<!--
+Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+
+This file is part of TUXEDO Control Center.
+
+TUXEDO Control Center is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TUXEDO Control Center is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<mat-accordion class="tcc-accordion">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon>
+                    <svg viewBox="0 0 512 512">
+                        <use href="./assets/images/icon_changecryptpassword.svg#Icon"></use>
+                    </svg>
+                </mat-icon>
+                <div i18n="@@cryptPasswordTabTitle" class="panel-title">Change Crypt Password</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-change-crypt-password></app-change-crypt-password>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon>
+                    <svg viewBox="0 0 512 512">
+                        <use href="./assets/images/icon_stopwatch.svg#Icon"></use>
+                    </svg>
+                </mat-icon>
+                <div i18n="@@menuShutdownTimer" class="panel-title">Shutdown Timer</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-shutdown-timer></app-shutdown-timer>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (click)="gotoComponent('keyboard-backlight')" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon>
+                    <svg viewBox="0 0 512 512">
+                        <use href="./assets/images/icon_kb_backlight5.svg#Icon"></use>
+                    </svg>
+                </mat-icon>
+                <div i18n="@@menuKeyboardBacklight" class="panel-title">Keyboard Backlight</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="content"></div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (click)="gotoComponent('camera-settings')" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon>
+                    <svg viewBox="0 0 512 512">
+                        <use href="./assets/images/icon_webcam.svg#Icon"></use>
+                    </svg>
+                </mat-icon>
+                <div i18n="@@menuWebcam" class="panel-title">Webcam</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="content"></div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,150 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.backlight-settings-edit {
+    overflow-x: hidden;
+
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 25px;
+    right: 5px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: scroll;
+    user-select: none;
+
+    .inner-backlight-settings-edit {
+        margin: 0 10px 10px 10px;
+
+        .sub-header {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .profile-title {
+            position: fixed;
+            top: 10px;
+            right: 40px;
+            z-index: 100;
+            padding-top: 10px;
+
+            .save-reset-buttons {
+                --icon-detail: var(--icon-main);
+                background-color: var(--foreground-color);
+            }
+
+            .name {
+                width: 400px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 20px;
+
+                input {
+                    width: 400px;
+                }
+            }
+        }
+
+        .profile-details-edit-grid {
+            .inactive {
+                opacity: 0.2;
+                pointer-events: none;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+
+                width: 100%;
+                text-align: left;
+                font-size: 16px;
+            }
+
+            text.value,
+            content.value {
+                width: 100%;
+                text-align: left;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            content.input {
+                width: 100%;
+
+                mat-slider {
+                    width: 100%;
+                    overflow: visible;
+                    margin: 0%;
+                }
+
+                mat-form-field {
+                    width: 100%;
+
+                    &.input-description {
+                        textarea {
+                            resize: none;
+                        }
+                    }
+                }
+            }
+
+            content.toggle-group {
+                text-align: left;
+                direction: rtl;
+            }
+
+            .increment-decrement-buttons {
+                display: flex;
+                padding-right: 20px;
+            }
+        }
+
+        .tgp-chart-container,
+        .fan-chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            margin-top: 20px;
+            width: 100%;
+
+            app-fan-chart {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            app-tgp-chart {
+                width: 100%;
+                margin-top: 20px;
+                height: 150px;
+            }
+        }
+    }
+}
+
+mat-grid-tile {
+    overflow: visible;
+}
+
+.hide-element {
+    display: none;
+}

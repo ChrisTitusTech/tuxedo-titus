@@ -1,0 +1,2 @@
+# Allow the local touchpad firmware helper to write the UNIW0001 hidraw feature report.
+KERNELS=="i2c-UNIW0001:00", SUBSYSTEMS=="i2c", ATTRS{name}=="UNIW0001:00", SUBSYSTEM=="hidraw", MODE="0622"

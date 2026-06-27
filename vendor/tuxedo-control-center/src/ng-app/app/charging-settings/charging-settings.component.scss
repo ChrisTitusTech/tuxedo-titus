@@ -1,0 +1,115 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.charging-group-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bolder;
+    padding-top: 20px;
+}
+
+.charging-radio-group {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    align-items: flex-start;
+
+    .header-text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .content-text {
+        font-size: 16px;
+    }
+
+    .radio-text {
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        .radio-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .radio-description {
+            font-size: 16px;
+        }
+    }
+}
+
+.charging-profile-note {
+    font-size: 16px;
+    padding-top: 16px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.info-icon-link {
+    height: 30px;
+}
+
+.inactive {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.edit-grid {
+    mat-grid-tile {
+        overflow: visible;
+    }
+
+    .description {
+        font-size: 16px;
+        text-align: left;
+        padding-top: 0px;
+        font-style: oblique;
+    }
+
+    .input {
+        width: 100%;
+
+        mat-slider {
+            width: 100%;
+        }
+    }
+
+    .header {
+        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .value {
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.apply-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}

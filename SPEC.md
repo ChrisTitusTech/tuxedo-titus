@@ -3,16 +3,17 @@
 ## Purpose
 
 `tuxedo-titus` is a host-local automation repository for building and
-installing the TUXEDO laptop support stack on this Fedora laptop. It coordinates
-two external source trees:
+installing the TUXEDO laptop support stack on this Fedora laptop. It carries the
+source files needed by its scripts under `vendor/`:
 
-- `/home/titus/github/tuxedo-drivers`: laptop-specific DKMS kernel modules,
+- `vendor/tuxedo-drivers`: laptop-specific DKMS kernel modules,
   modprobe rules, udev rules, and the local `tuxedo-touchpad` helper.
-- `/home/titus/github/tuxedo-control-center`: TUXEDO Control Center GUI and
-  daemon, built as an RPM from the local checkout.
+- `vendor/tuxedo-control-center`: TUXEDO Control Center GUI and daemon, built as
+  an RPM from the local source copy.
 
-This repository does not fork, vendor, or rewrite those projects. It provides a
-repeatable workflow for this machine.
+The vendored directories are source snapshots for this machine. Generated
+dependencies and build outputs such as `node_modules/`, `build/`, and `dist/`
+remain untracked.
 
 ## Host Contract
 
@@ -88,8 +89,8 @@ reviewing the generated RPM and installing equivalent Fedora libraries manually.
 Defaults:
 
 ```bash
-TUXEDO_DRIVERS_DIR=/home/titus/github/tuxedo-drivers
-TUXEDO_CONTROL_CENTER_DIR=/home/titus/github/tuxedo-control-center
+TUXEDO_DRIVERS_DIR="${repo_root}/vendor/tuxedo-drivers"
+TUXEDO_CONTROL_CENTER_DIR="${repo_root}/vendor/tuxedo-control-center"
 SUDO=sudo
 ```
 
@@ -106,4 +107,3 @@ Local overrides belong in `config/local.env`, which is ignored by Git.
 - `make install-control-center` installs the RPM and starts the daemon units.
 - `tuxedo-touchpad status`, `dkms status`, `modinfo tuxedo_keyboard`, and
   `systemctl status tccd` provide healthy runtime evidence.
-

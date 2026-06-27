@@ -9,3 +9,17 @@ config/local.env
 build/
 dist/
 
+# Build output and dependencies generated inside vendored sources
+vendor/tuxedo-control-center/.angular/
+vendor/tuxedo-control-center/build/
+vendor/tuxedo-control-center/dist/
+vendor/tuxedo-control-center/node_modules/
+vendor/tuxedo-drivers/.cache.mk
+vendor/tuxedo-drivers/**/.*.cmd
+vendor/tuxedo-drivers/**/*.cmd
+vendor/tuxedo-drivers/**/*.ko
+vendor/tuxedo-drivers/**/*.mod
+vendor/tuxedo-drivers/**/*.mod.c
+vendor/tuxedo-drivers/**/*.o
+vendor/tuxedo-drivers/**/Module.symvers
+vendor/tuxedo-drivers/**/modules.order

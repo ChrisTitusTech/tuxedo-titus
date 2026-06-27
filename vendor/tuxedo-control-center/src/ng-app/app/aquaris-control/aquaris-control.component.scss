@@ -1,0 +1,291 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.theme-page-title {
+    flex-flow: column nowrap;
+    align-items: center;
+
+    opacity: 1;
+
+    .icon-link-info {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        cursor: pointer;
+    }
+
+    header {
+        .emph {
+            color: var(--icon-detail);
+        }
+    }
+
+    .connection-status {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+
+        font-size: 16px;
+        gap: 10px;
+        padding-bottom: 16px;
+
+        .value {
+            font-weight: normal;
+        }
+
+        .inner-connection-status {
+            display: flex;
+            align-items: center;
+
+            .connection-status-dot {
+                display: inline-block;
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+                transform-origin: center;
+
+                margin: 10px;
+
+                background-color: gray;
+
+                @keyframes pulse-frames {
+                    0% {
+                        opacity: 0.3;
+                        transform: scale(0.42);
+                    }
+                    50% {
+                        opacity: 0.7;
+                        transform: scale(0.83);
+                    }
+                    100% {
+                        opacity: 0.3;
+                        transform: scale(0.42);
+                    }
+                }
+
+                &.searching {
+                    background-color: gray;
+                    animation: pulse-frames 1s infinite;
+                }
+
+                &.connected {
+                    transform: scale(0.42);
+                    background-color: rgba(100, 209, 113, 1);
+                }
+            }
+        }
+
+        mat-icon {
+            margin: 0px;
+        }
+    }
+}
+
+.aquaris-content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding-bottom: 16px;
+
+    .categories {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        width: 100%;
+
+        .category {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+
+            .title {
+                font-size: 18px;
+            }
+
+            header {
+                display: flex;
+                flex-flow: column nowrap;
+                margin-bottom: 20px;
+            }
+
+            .label {
+                display: inline-flex;
+                width: 80px;
+            }
+
+            .fan-control {
+                display: flex;
+                align-items: center;
+            }
+
+            mat-button-toggle-group {
+                margin: 25px 0px;
+                font-size: 0.7em;
+                height: 24px;
+                align-items: center;
+            }
+
+            mat-tab-group {
+                width: 100%;
+                height: 100% !important;
+                mat-tab {
+                    height: 100% !important;
+                }
+
+                ::ng-deep .mat-tab-body-content {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+
+                    height: 100% !important;
+                    width: 100%;
+
+                    mat-button-toggle-group {
+                        transform: scale(1.4);
+                        transform-origin: center;
+                    }
+
+                    .description {
+                        display: block;
+                        margin: 40px auto;
+                        width: 90%;
+                        font-size: 1.2em;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.color-visualizer {
+    width: 0px;
+    height: 0px;
+}
+
+.device-list-wrapper {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 24px 0;
+    padding: 10px;
+    min-height: 200px;
+    width: 600px;
+
+    ::ng-deep .mdc-radio {
+        display: none;
+    }
+}
+
+.troubleshoot-list {
+    width: 600px;
+
+    font-size: 1.2em;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 16px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .demo {
+        display: flex;
+        align-items: center;
+
+        .description {
+            padding-right: 16px;
+            font-size: 16px;
+        }
+    }
+
+    li {
+        margin: 10px auto;
+    }
+}
+
+.aquaris-logo {
+    height: 110px;
+}
+
+.select-dropdown {
+    width: 200px;
+}
+
+.low-fan-values-notice {
+    font-size: 16px;
+}
+
+.list-connect-button {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.fan-gauge-input {
+    width: 100px !important;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px;
+
+    border-style: unset;
+    background-color: transparent;
+    outline: none;
+}
+
+.fan-speed-edit {
+    display: flex;
+}
+
+mat-tab-group {
+    height: 100%;
+
+    ::ng-deep .mat-mdc-tab-body-wrapper {
+        flex: 1 1 250px;
+        display: inline-grid;
+        flex-direction: column;
+
+        ::ng-deep .mat-mdc-tab-body-content {
+            display: grid;
+            justify-content: space-around;
+
+            ::ng-deep .mat-button-toggle-group {
+                top: 30px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            ::ng-deep .mat-mdc-checkbox {
+                display: flex;
+                justify-content: center;
+                height: fit-content;
+            }
+        }
+    }
+}

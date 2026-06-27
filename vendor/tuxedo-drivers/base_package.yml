@@ -1,0 +1,35 @@
+name: tuxedo-ibp-gen7-drivers
+summary: Personal Fedora drivers for TUXEDO InfinityBook Pro Gen7
+description: Personal Fedora DKMS modules and touchpad helper for TUXEDO InfinityBook Pro Gen7 MK1.
+git_url: "https://github.com/local/tuxedo-ibp-gen7-drivers"
+license: GPL-2.0-or-later
+
+file_map:
+  - ["src", "usr/src/$PKG_NAME-$PKG_VERSION"]
+  - ["files", ""]
+  - ["tools", "usr/src/$PKG_NAME-$PKG_VERSION/tools"]
+
+dkms_modules:
+  - ["tuxedo_keyboard", "/kernel/lib/"]
+  - ["uniwill_wmi", "/kernel/lib/"]
+  - ["tuxedo_io", "/kernel/lib/", "tuxedo_io"]
+  - ["tuxedo_compatibility_check", "/kernel/lib/", "tuxedo_compatibility_check"]
+
+dependencies:
+  - dkms
+  - gcc
+  - make
+  - systemd-devel
+
+replaces:
+  - tuxedo-keyboard-dkms
+  - tuxedo-keyboard-ite-dkms
+
+changelog:
+  - version: "4.22.2-fedora-ibp7.1"
+    author: "Personal Fedora build"
+    date: 2026-06-27 00:00:00
+    entries:
+      - Limit DKMS module set to the verified InfinityBook Pro Gen7 Uniwill stack.
+      - Add local hidraw touchpad firmware helper for UNIW0001:00 093A:0274.
+      - Keep only Fedora 44 package-test dependencies and hardware-matching udev rules.

@@ -1,0 +1,104 @@
+/*!
+ * Copyright (c) 2019-2026 TUXEDO Computers GmbH <tux@tuxedocomputers.com>
+ *
+ * This file is part of TUXEDO Control Center.
+ *
+ * TUXEDO Control Center is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TUXEDO Control Center is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TUXEDO Control Center.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.global-settings {
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 25px;
+    right: 5px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: scroll;
+
+    .inner-global-settings {
+        margin: 0 10px 10px 10px;
+
+        .title {
+            font-size: 24px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+        }
+
+        .description {
+            font-size: 16px;
+
+            padding-top: 16px;
+            padding-bottom: 16px;
+            text-align: center;
+        }
+
+        .content {
+            .description {
+                font-size: 16px;
+                text-align: left;
+                padding-top: 0px;
+                font-style: oblique;
+            }
+
+            .input {
+                flex: 1;
+            }
+
+            .header {
+                width: 100%;
+                text-align: left;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .value {
+                width: 100%;
+                text-align: left;
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.margin-top {
+    margin-top: 0.8rem;
+}
+
+.margin-bottom {
+    margin-bottom: 0.8rem;
+}
+
+.margin-left {
+    margin-left: 2em;
+}
+
+.theme-settings-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.hide {
+    display: none;
+}
+
+mat-grid-tile {
+    overflow: visible;
+}

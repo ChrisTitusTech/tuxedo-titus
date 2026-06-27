@@ -7,19 +7,21 @@ and TUXEDO Control Center checkout.
 
 - Target host: TUXEDO InfinityBook Pro Gen7 (MK1), SKU `IBP1XI07MK1`.
 - Target OS: Fedora Linux 44 or newer Fedora releases, `x86_64`.
-- Driver source default: `/home/titus/github/tuxedo-drivers`.
-- Control Center source default: `/home/titus/github/tuxedo-control-center`.
-- The originally requested driver path `/home/titus/github/tuxedo-drives` is not
-  assumed to exist; override `TUXEDO_DRIVERS_DIR` when using a different path.
+- Driver source default: `vendor/tuxedo-drivers`.
+- Control Center source default: `vendor/tuxedo-control-center`.
+- Override `TUXEDO_DRIVERS_DIR` or `TUXEDO_CONTROL_CENTER_DIR` only when
+  deliberately testing another checkout.
 
 ## Safety
 
-- Do not vendor or copy the TUXEDO source trees into this repo.
+- Keep generated dependencies and build output out of Git, especially
+  `vendor/tuxedo-control-center/node_modules`, `vendor/tuxedo-control-center/build`,
+  `vendor/tuxedo-control-center/dist`, and kernel build artifacts under
+  `vendor/tuxedo-drivers`.
 - Treat `scripts/install-*` and `make install-*` targets as privileged host
   operations because they install packages, DKMS modules, udev rules, DBus
   policy, and systemd units.
-- Preserve unrelated changes in the source trees. Inspect their `git status`
-  before editing them.
+- Preserve unrelated changes in the vendored source trees.
 - Do not disable SELinux or weaken system security to make installs pass.
 - Keep destructive cleanup limited to generated build artifacts and documented
   package paths.
@@ -49,4 +51,3 @@ After installing Control Center:
 - `systemctl status tccd`
 - `systemctl status tccd-sleep`
 - Launch `tuxedo-control-center` from the desktop or command line.
-
