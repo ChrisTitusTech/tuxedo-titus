@@ -1,0 +1,11 @@
+*.log
+*.tmp
+.DS_Store
+
+# Local override files
+config/local.env
+
+# Build output from wrapper scripts
+build/
+dist/
+
